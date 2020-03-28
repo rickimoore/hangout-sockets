@@ -1,6 +1,7 @@
 const Express = require('express');
 const Http = require('http').Server(Express);
 const SocketIo = require('socket.io')(Http);
+const PORT = process.env.PORT || 3000;
 
 
 SocketIo.on('connection', socket => {
@@ -18,6 +19,6 @@ SocketIo.on('connection', socket => {
 });
 
 
-Http.listen(3000, () => {
+Http.listen(PORT, () => {
     console.log('listening at :3000...')
 });
