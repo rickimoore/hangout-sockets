@@ -4,14 +4,13 @@ const SocketIo = require('socket.io')(Http);
 const PORT = process.env.PORT || 3000;
 
 
-let connectedCounter = 0;
-
-
 SocketIo.on('connection', socket => {
+    let connectedCounter = 0;
+
     socket.on('onBoard', user => {
         connectedCounter += 1;
         SocketIo.emit('introduce', user);
-        SocketIo.emit('count', connectedCounter)
+        SocketIo.emit('count', connectedCounter);
     });
 
     socket.on('onLeave', user => {
